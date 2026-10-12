@@ -4,6 +4,8 @@ A fan-made port of the GameCube boot animation and main menu to Python/OpenGL.
 Logic is re-implemented from reverse engineering; models, textures, animations,
 music and sound effects are read **at runtime from your own IPL (BIOS) dump**.
 
+![image alt](https://github.com/Scout05/gcipl/blob/main/gamecube.jpg?raw=true)
+
 **This repository contains no Nintendo code or data.** You need to dump the IPL
 from a GameCube you own. Not affiliated with or endorsed by Nintendo.
 "Nintendo GameCube" is a trademark of Nintendo.

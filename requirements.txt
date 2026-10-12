@@ -1,0 +1,4 @@
+numpy
+pygame-ce
+moderngl
+pillow  # only needed by tools/

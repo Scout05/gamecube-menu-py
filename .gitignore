@@ -1,0 +1,19 @@
+# Allow-list: only our own source is tracked. Everything else (IPL dumps, extracted
+# resources, renders, decompiled Nintendo code, memory cards, local settings) stays local.
+/*
+!/.gitignore
+!/README.md
+!/LICENSE
+!/requirements.txt
+!/run.py
+!/ipl/
+!/tools/
+
+__pycache__/
+*.py[co]
+*.bin
+*.raw
+*.gcp
+*.png
+*.wav
+*.bak

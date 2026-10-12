@@ -8,6 +8,7 @@
 !/run.py
 !/ipl/
 !/tools/
+!/gamecube.jpg
 
 __pycache__/
 *.py[co]
@@ -17,3 +18,10 @@ __pycache__/
 *.png
 *.wav
 *.bak
+# tool outputs, wherever they are written
+*.gif
+*.obj
+*.mtl
+*.c
+*.txt
+!/requirements.txt

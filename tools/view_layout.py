@@ -1,5 +1,4 @@
 """Render GLH0 layouts flat (2D) with the TXH0 bank to PNGs: python tools/view_layout.py OUTDIR id [id...]"""
-import glob
 import os
 import sys
 
@@ -13,7 +12,8 @@ from ipl.ui import UI, Layout, TextureBank  # noqa: E402
 
 
 def rb(i):
-    return open(glob.glob(os.path.join(os.path.dirname(__file__), "..", "res", f"{i:03d}_*.bin"))[0], "rb").read()
+    from ipl import rom
+    return rom.res_bytes(i)
 
 
 class FakeR:

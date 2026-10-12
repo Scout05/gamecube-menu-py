@@ -21,8 +21,8 @@ W, H = 640, 448
 
 
 def res(i):
-    import glob
-    return open(glob.glob(os.path.join(ROOT, "res", f"{i:03d}_*.bin"))[0], "rb").read()
+    from ipl import rom
+    return rom.res_bytes(i)
 
 
 def perspective(fovy_deg, aspect, near, far):

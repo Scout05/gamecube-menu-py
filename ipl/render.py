@@ -26,7 +26,8 @@ TILE_FS = """
 uniform sampler2D u_tex; uniform vec3 u_color; uniform float u_fade;
 in vec2 v_uv; in float v_a; out vec4 o;
 void main() {
-    float i = texture(u_tex, v_uv).r;
+    vec2 m = mod(v_uv, 2.0);                      // GX_MIRROR wrap: the texture is one tile corner,
+    float i = texture(u_tex, min(m, 2.0 - m)).r;  // mirrored over UV 0..2 into a whole tile
     o = vec4(u_color * i, v_a * u_fade * i);
 }
 """
@@ -89,7 +90,7 @@ class Renderer:
         import gxtex
         img, _ = gxtex.decode_bti(res_bytes(0x65), 0)
         self.tile_tex = ctx.texture((img.shape[1], img.shape[0]), 4, np.ascontiguousarray(img).tobytes())
-        self.tile_tex.repeat_x = self.tile_tex.repeat_y = True
+        self.tile_tex.repeat_x = self.tile_tex.repeat_y = False   # mirroring is done in TILE_FS
         self.tile_prog = ctx.program(vertex_shader=TILE_VS, fragment_shader=TILE_FS)
         self.tile_vbo = ctx.buffer(reserve=4 * 6 * 6 * 3 * 3 * 3 * 64)
         self.tile_vao = ctx.vertex_array(self.tile_prog, [(self.tile_vbo, "3f 2f 1f", "a_pos", "a_uv", "a_alpha")])
